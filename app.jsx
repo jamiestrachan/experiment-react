@@ -1,12 +1,30 @@
-var Feed = React.createClass({
+var Ad = React.createClass({
   render: function() {
-    <div className="feed">
-      The Feed
-    </div>
+    return (
+      <div className="ad">
+        Ad
+      </div>
+    );
   }
 });
-      
-React.render(
-  <Feed />,
-  document.getElementById('content')
-);
+
+var Card = React.createClass({
+  render: function() {
+    return (
+      <div className="card">
+        Card
+      </div>
+    );
+  }
+});
+
+var Feed = React.createClass({
+  render: function() {
+    var cards = [];
+    return (
+      <div className="feed">
+        The Feed
+      </div>
+    );
+  }
+});
