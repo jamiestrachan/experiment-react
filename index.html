@@ -4,14 +4,25 @@
     <script src="https://fb.me/react-0.13.3.js"></script>
     <script src="https://fb.me/JSXTransformer-0.13.3.js"></script>
     <script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
+    <style type="text/css">
+    .card, .ad {
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+      float: left;
+      margin-bottom: 15px;
+      margin-right: 1%;
+      min-width: 300px;
+      padding: 10px;
+      width: 32%;
+    }
+    </style>
   </head>
   <body>
     <div id="content"></div>
     <script type="text/jsx" src="app.jsx"></script>
-    <!--<script type="text/javascript" src="data.js"></script>-->
     <script type="text/jsx">
     React.render(
-      <Feed url="content.json" pollInterval={15000} />,
+      <Feed url="http://cbc.jamiestrachan.ca/json/cmlink/7.807" pollInterval={10000} />,
       document.getElementById('content')
     );
     </script>
