@@ -11,7 +11,7 @@
     <script type="text/javascript" src="data.js"></script>
     <script type="text/jsx">
     React.render(
-      <Feed content={CONTENT} />,
+      <Feed url="content.json" pollInterval={15000} />,
       document.getElementById('content')
     );
     </script>
