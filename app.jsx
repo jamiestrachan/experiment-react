@@ -12,7 +12,7 @@ var Card = React.createClass({
   render: function() {
     return (
       <div className="card">
-        Card
+        <a href={"http://www.cbc.ca" + this.props.contentItem.url}>{this.props.contentItem.title}</a>
       </div>
     );
   }
@@ -21,9 +21,13 @@ var Card = React.createClass({
 var Feed = React.createClass({
   render: function() {
     var cards = [];
+    var contentBetweenAds = 6;
+    this.props.content.forEach(function(contentItem) {
+      cards.push(<Card contentItem={contentItem} key={contentItem.id} />);
+    });
     return (
       <div className="feed">
-        The Feed
+        {cards}
       </div>
     );
   }
