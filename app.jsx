@@ -26,7 +26,7 @@ var Feed = React.createClass({
     $.ajax({
       url: this.props.url,
       dataType: 'json',
-      cache: false,
+      cache: true,
       success: function(data) {
         this.setState({content: data.contentlist.contentitems});
       }.bind(this),
@@ -40,7 +40,7 @@ var Feed = React.createClass({
   },
   componentDidMount: function() {
     this.loadContent();
-    setInterval(this.loadContent, this.props.pollInterval);
+    //setInterval(this.loadContent, this.props.pollInterval);
   },
   render: function() {
     var cards = [];
