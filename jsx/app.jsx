@@ -12,10 +12,10 @@ var Card = React.createClass({
   render: function() {
     return (
       <div className="card">
-        <a href={"http://www.cbc.ca" + this.props.contentItem.url}>
+        <a href={this.props.contentItem.url}>
           <img src={this.props.contentItem.headlineimage.derivatives["16x9_620"].fileurl} width="100%" />
         </a>
-        <a href={"http://www.cbc.ca" + this.props.contentItem.url}>{this.props.contentItem.title}</a>
+        <a href={this.props.contentItem.url}>{this.props.contentItem.title}</a>
       </div>
     );
   }

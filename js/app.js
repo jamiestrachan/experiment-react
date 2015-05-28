@@ -12,10 +12,10 @@ var Card = React.createClass({displayName: "Card",
   render: function() {
     return (
       React.createElement("div", {className: "card"}, 
-        React.createElement("a", {href: "http://www.cbc.ca" + this.props.contentItem.url}, 
+        React.createElement("a", {href: this.props.contentItem.url}, 
           React.createElement("img", {src: this.props.contentItem.headlineimage.derivatives["16x9_620"].fileurl, width: "100%"})
         ), 
-        React.createElement("a", {href: "http://www.cbc.ca" + this.props.contentItem.url}, this.props.contentItem.title)
+        React.createElement("a", {href: this.props.contentItem.url}, this.props.contentItem.title)
       )
     );
   }
