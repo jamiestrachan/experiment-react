@@ -49,17 +49,21 @@ module.exports = function(grunt) {
         noarg: true,
         sub: true,
         undef: true,
-        unused: true,
+        unused: false,
         boss: true,
         eqnull: true,
         browser: true,
-        globals: {}
+        globals: {
+          "React": false,
+          "$": false,
+          "console": false
+        }
       },
       gruntfile: {
         src: 'Gruntfile.js'
       },
-      lib_test: {
-        src: ['lib/**/*.js', 'test/**/*.js']
+      js: {
+        src: 'js/*.js'
       }
     },
     watch: {
@@ -67,9 +71,9 @@ module.exports = function(grunt) {
         files: '<%= jshint.gruntfile.src %>',
         tasks: ['jshint:gruntfile']
       },
-      lib_test: {
-        files: '<%= jshint.lib_test.src %>',
-        tasks: ['jshint:lib_test', 'qunit']
+      jsx: {
+        files: 'jsx/*.jsx',
+        tasks: ['default']
       }
     }
   });
@@ -82,6 +86,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
-  grunt.registerTask('default', ['react']);
-
+  grunt.registerTask('default', ['react','jshint']);
+  grunt.registerTask('develop', ['default','watch']);
 };
