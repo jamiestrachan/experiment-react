@@ -11,23 +11,22 @@ module.exports = function(grunt) {
       '* Copyright (c) <%= grunt.template.today("yyyy") %> <%= pkg.author.name %>;' +
       ' Licensed <%= _.pluck(pkg.licenses, "type").join(", ") %> */\n',
     // Task configuration.
+    clean: {
+      js: ["js/*.js"]
+    },
     react: {
         dist: {
           files: {
-            'js/app.js': [
-                'jsx/app.jsx'
+            'src/js/app.js': [
+                'src/jsx/app.jsx'
             ]
           }
         }
     },
     concat: {
-      options: {
-        banner: '<%= banner %>',
-        stripBanners: true
-      },
       dist: {
-        src: ['lib/<%= pkg.name %>.js'],
-        dest: 'dist/<%= pkg.name %>.js'
+        src: ['src/js/vendor/*.js','src/js/*.js'],
+        dest: 'js/app.js'
       }
     },
     uglify: {
@@ -63,7 +62,7 @@ module.exports = function(grunt) {
         src: 'Gruntfile.js'
       },
       js: {
-        src: 'js/*.js'
+        src: 'src/js/*.js'
       }
     },
     watch: {
@@ -79,6 +78,7 @@ module.exports = function(grunt) {
   });
 
   // These plugins provide necessary tasks.
+  grunt.loadNpmTasks('grunt-contrib-clean');
   grunt.loadNpmTasks('grunt-react');
   grunt.loadNpmTasks('grunt-contrib-concat');
   grunt.loadNpmTasks('grunt-contrib-uglify');
@@ -86,6 +86,6 @@ module.exports = function(grunt) {
   grunt.loadNpmTasks('grunt-contrib-watch');
 
   // Default task.
-  grunt.registerTask('default', ['react','jshint']);
+  grunt.registerTask('default', ['clean','react','jshint','concat']);
   grunt.registerTask('develop', ['default','watch']);
 };
